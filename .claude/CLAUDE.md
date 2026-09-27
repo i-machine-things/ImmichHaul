@@ -135,10 +135,11 @@ Do not batch a system-breaking fix with other changes — ship it the moment it 
 After every merge to `master`, count commits since the last `v*` tag:
 
 ```bash
-git log $(git describe --tags --abbrev=0)..master --oneline
+git log $(git describe --tags --abbrev=0)..master --format='%s'
 ```
 
-Count by type:
+Count by type (`--format='%s'` prints subjects only; `--oneline` would put the hash first and nothing
+would match):
 - Lines starting with `feat:` → feature count
 - Lines starting with `fix:` → fix count
 
